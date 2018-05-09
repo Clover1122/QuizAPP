@@ -44,8 +44,8 @@
       z-index: 900;
     }
     </style>
-
-<!-- This is the code for the leaflet map -->
+	
+	<!-- This is the code for the leaflet map -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
    	integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
    	crossorigin=""/>
@@ -62,7 +62,6 @@
 	<script src="leaflet.awesome-markers.js"></script>
 	<link rel="stylesheet" href="./css/ionicons.min.css">
 	<link rel="stylesheet" href="./css/leaflet.awesome-markers.css">
-
 	
   </head>
   <body>
@@ -90,60 +89,50 @@
         <header class="demo-drawer-header">
           <img src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>This is a Quiz App</span>
+            <span>Hello, This is a Quiz App</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
               <span class="visuallyhidden">Accounts</span>
             </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">This is a Quiz App</li>
+			<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item">Hello, This is a Quiz App</li>
               <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
             </ul>
           </div>
         </header>
 		
-		<nav class="demo-navigation mdl-navigation mdl-color--black">
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--white material-icons" role="presentation">home</i>Home</a>
-          <a class="mdl-navigation__link" href="" onclick='trackLocation();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">Info</i>Track Location</a>
-          <a class="mdl-navigation__link" href="" onclick='getDistance();return false'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Distance to Warren Street</a>
-          <a class="mdl-navigation__link" href="" onclick='getgeoJSONlayer();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Get Question points</a>
-          <a class="mdl-navigation__link" href="" onclick='closeDistanceQuestions();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Answer question</a>
+		 <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="index.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="usersguide.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>User Guide</a>
+          <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
-     <main class="mdl-layout__content mdl-color--white">
-	 <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid"> 
-	 <!-- the change of main web content -->
-		<div id="mapid" style="width: 1600px; height: 400px;"></div>
+	  <main class="mdl-layout__content mdl-color--grey-100">
+	  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" > 
+	  <!-- show the userguide -->
+		<div id="usersguide" style="width: 1600px; height: 600px;"></div>
+		 <h1 style="font-family:calibri;"> User Guide of QuizApp </h1>
+		 <p style="font-family:arial; font-size: 130%"><b>A Guide for Users to understand this Quiz app completely.</b></p>
+		 <ol style="font-family:arial; font-size: 110%">
+		    <li> User's location in this app is tracked through the phone (GPS settings keep turning on) that he/she is using, the default searching radius in this app is 50m (about 2-minutes walk).<li>
+			<li> This radius is the maximum scope of a question point showed on the map which also means that the radius of a track location in this app is 50m.<li>
+            <li> In usual, the location of a user will be tracked automatically; however, users are allowed to locate their positions on the map manully once their locations are unable to be tracked or some errors appear.<li>
+            <li> The user location can be showed by clicking the center of the 50m radius. A pop-up "You are here" will appear after clicking.<li>
+            <li> The question points are usually identified by location name such as UCL main library.<li>
+            <li> Once a question point is in the radius of a user, an information"Please answer this question" will appear in the nevigation menu.<li>
+            <li> Users will start answering a quiz question with 4 answers after clicking, users need to choose one of them and the app will show an information to tell users whether they are true or false.<li>
+            <li> When user try to click the question point which is outside the radius of the track location. an alert will be showed to notice user to get closer to the question point.<li>
+            <li> Besides, the distance from current location to Warren Street Station can also be calculated.<li>
+            <li> The process above will keep repeating until all questions are answered.<li>
+		 </ol>
+		 <a id="HomePage" href="index.html">Return to the HomePage</a><br />
          </div>
-         <div id='showDistance'>Distance To Warren Street <button id='getDistance' onclick=getDistance()>Calculate Distance</button></div>
-
-
-     <div id="questions" style ="display:none">
-        <h2 id = "QuestionHead"> Please answer this question XD:</h2>
-		
-		<textarea readonly id = "Question" style="border: none; width:100%" ></textarea>
-
-        <textarea readonly id = "Answer_1"></textarea>
-        <input type="radio" name="answer" id = radioCheck1 value="1" checked="yes" /><br />
-
-        <textarea readonly id = "Answer_2"></textarea>
-        <input type="radio" name="answer" id = radioCheck2 value="2"/><br />
-
-        <textarea readonly id = "Answer_3"></textarea>
-        <input type="radio" name="answer" id = radioCheck3 value="3"/><br />
-
-        <textarea readonly id = "Answer_4"></textarea>
-        <input type="radio" name="answer" id = radioCheck4 value="4"/><br />
-
-        <button id="SubmitButton" onclick ="submitUserAnswer()">I want to submit my answer</button>
-        </div>
-
-      </main>
+		</div>
+		</main>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<script src="./js/appActivity.js"></script>
     <script src="./js/uploadData.js"></script>
     </div>
 	</body>
 </html>
-

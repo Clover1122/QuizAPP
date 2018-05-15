@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Quiz App",
+  "short_name": "Quiz App",
+  "version": "BasicAPP",
+  "description": "This application is to implement the quiz -i.e. download the questions, pop up a question when the user gets close to it and answer it.",
+  "author": "PhoneGap Team",
+  "icons": [],
+  "start_url": "index.html"
+}
